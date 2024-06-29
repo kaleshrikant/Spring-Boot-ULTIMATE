@@ -20,5 +20,8 @@ public class ExampleApplication {
 		System.out.println(mySecondService.getJavaVersion());
 		System.out.println(mySecondService.getOsName());
 		System.out.println(mySecondService.readProps());
+		System.out.println(mySecondService.getUserName());
+
+		System.out.println(mySecondService.getSystemDetails());
 	}
 }
