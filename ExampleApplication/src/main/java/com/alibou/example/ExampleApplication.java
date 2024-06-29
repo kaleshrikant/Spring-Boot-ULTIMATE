@@ -19,5 +19,6 @@ public class ExampleApplication {
 		MySecondService mySecondService = context.getBean(MySecondService.class);
 		System.out.println(mySecondService.getJavaVersion());
 		System.out.println(mySecondService.getOsName());
+		System.out.println(mySecondService.readProps());
 	}
 }

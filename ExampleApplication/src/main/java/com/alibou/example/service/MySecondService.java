@@ -21,4 +21,8 @@ public class MySecondService {
     public String getOsName() {
         return "OS Name : "+environment.getProperty("os.name");
     }
+
+    public String readProps() {
+        return "Application Name : "+environment.getProperty("spring.application.name");
+    }
 }
