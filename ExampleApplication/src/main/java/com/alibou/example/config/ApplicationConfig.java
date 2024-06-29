@@ -22,7 +22,7 @@ public class ApplicationConfig {
 
     @Bean
    // @Qualifier("bean-3")
-    @Primary
+   // @Primary
     public MyFirstClass myThirdBean() {
         return new MyFirstClass("Third Bean");
     }
