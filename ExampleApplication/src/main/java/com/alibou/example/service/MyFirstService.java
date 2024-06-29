@@ -8,9 +8,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class MyFirstService {
 
-    @Autowired
-    @Qualifier("myThirdBean")
+   // @Autowired
+   // @Qualifier("myThirdBean")
     private MyFirstClass myFirstClass;
+
+    @Autowired
+    public void injectDependencies(
+           @Qualifier("bean1") MyFirstClass myFirstClass
+    ) {
+        this.myFirstClass = myFirstClass;
+    }
 
 /*
      Removing Constructor Injection
