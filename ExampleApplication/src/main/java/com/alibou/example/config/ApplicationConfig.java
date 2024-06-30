@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
+@Profile("sit")
 public class ApplicationConfig {
 
     @Bean("bean1")
-    @Profile("sit")
     // @Qualifier("bean-1")
     public MyFirstClass myFirstBean() {
         return new MyFirstClass("First Bean");
