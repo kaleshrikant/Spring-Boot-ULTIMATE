@@ -6,11 +6,19 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.util.Collections;
+
 @SpringBootApplication
 public class ExampleApplication {
 
 	public static void main(String[] args) {
-		var context = SpringApplication.run(ExampleApplication.class, args);
+
+		// Profiles - programmatic approach
+		var app = new SpringApplication(ExampleApplication.class);
+		app.setDefaultProperties(Collections.singletonMap("spring.profiles.active","sit"));
+		var context = app.run(args);
+
+	/*	var context = SpringApplication.run(ExampleApplication.class, args); */
 
 		MyFirstService service = context.getBean(MyFirstService.class);
 		System.out.println(service.tellAStory());
