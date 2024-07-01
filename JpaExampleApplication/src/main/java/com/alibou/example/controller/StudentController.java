@@ -51,4 +51,12 @@ public class StudentController {
     ) {
         return studentService.findStudentByLastNameContaining(studentName);
     }
+
+    // http://localhost:8080/students/delete/52
+    @DeleteMapping("/students/delete/{student-id}")
+    public void delete(
+            @PathVariable("student-id") Integer studentId
+    ) {
+        studentService.deleteStudent(studentId);
+    }
 }

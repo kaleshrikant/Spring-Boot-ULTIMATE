@@ -37,4 +37,8 @@ public class StudentService {
     public List<Student> findStudentByLastNameContaining(String studentName) {
         return studentRepository.findAllByLastNameContaining(studentName);
     }
+
+    public void deleteStudent(Integer studentId) {
+        studentRepository.deleteById(studentId);
+    }
 }
