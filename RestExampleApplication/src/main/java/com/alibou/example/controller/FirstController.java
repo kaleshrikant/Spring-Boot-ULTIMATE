@@ -41,4 +41,13 @@ public class FirstController {
         return "Hello user : " +userName;
     }
 
+    // http://localhost:9090/hello/user?user-first-name=Shrikant&user-last-name=Kale
+    @GetMapping("/hello/user")
+    public String paramVar(
+            @RequestParam("user-first-name") String userFirstName,
+            @RequestParam("user-last-name") String userLastName
+    ) {
+        return "Hello user : " +userFirstName+ "  "+userLastName;
+    }
+
 }
