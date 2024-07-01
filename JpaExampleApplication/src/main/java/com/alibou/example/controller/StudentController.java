@@ -35,4 +35,20 @@ public class StudentController {
     ) {
         return studentService.findStudent(studentId);
     }
+
+    // http://localhost:8080/students/search/Shrikant
+    @GetMapping("/students/search/{student-name}")
+    public List<Student> findStudentByName(
+            @PathVariable("student-name") String studentName
+    ) {
+        return studentService.findStudentByName(studentName);
+    }
+
+    // http://localhost:8080/students/matches/Kale
+    @GetMapping("/students/matches/{student-name}")
+    public List<Student> findStudentByLastNameContaining(
+            @PathVariable("student-name") String studentName
+    ) {
+        return studentService.findStudentByLastNameContaining(studentName);
+    }
 }

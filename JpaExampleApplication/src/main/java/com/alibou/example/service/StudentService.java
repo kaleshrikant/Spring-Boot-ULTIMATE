@@ -29,4 +29,12 @@ public class StudentService {
     public Optional<Student> findStudent(Integer studentId) {
         return studentRepository.findById(studentId);
     }
+
+    public List<Student> findStudentByName(String firstName) {
+        return studentRepository.findAllByFirstName(firstName);
+    }
+
+    public List<Student> findStudentByLastNameContaining(String studentName) {
+        return studentRepository.findAllByLastNameContaining(studentName);
+    }
 }
