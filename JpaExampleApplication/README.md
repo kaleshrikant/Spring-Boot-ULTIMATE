@@ -19,6 +19,8 @@
 `postgres=# CREATE DATABASE ultimate_db OWNER shrikant;`
 `CREATE DATABASE`
 
+`# GRANT ALL PRIVILEGES ON DATABASE ultimate_db TO shrikant;`
+
 ### list out databases
 
 `postgres=# \l`
