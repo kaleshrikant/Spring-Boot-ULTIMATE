@@ -31,6 +31,11 @@ public class Student {
     private String email;
     private int age;
 
+    @Column(
+            updatable = false
+    )
+    private String some_column;
+
     @Override
     public String toString() {
         return "Student{" +
