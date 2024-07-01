@@ -1,5 +1,6 @@
 package com.alibou.example.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Setter
@@ -7,8 +8,13 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Order {
+    @JsonProperty("c-Name")
     private String customerName;
+
+    @JsonProperty("p-Name")
     private String productName;
+
+    @JsonProperty("quantity")
     private int quantity;
 
     @Override
