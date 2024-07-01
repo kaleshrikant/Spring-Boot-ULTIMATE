@@ -2,10 +2,7 @@ package com.alibou.example.controller;
 
 import com.alibou.example.dto.Order;
 import com.alibou.example.dto.OrderRecord;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class FirstController {
@@ -35,4 +32,13 @@ public class FirstController {
     ) {
         return "Request accepted and order is : "+orderRecord.toString();
     }
+
+    // http://localhost:9090/hello/Shrikant.Kale
+    @GetMapping("/hello/{user-name}")
+    public String pathVar(
+            @PathVariable("user-name") String userName
+    ) {
+        return "Hello user : " +userName;
+    }
+
 }
