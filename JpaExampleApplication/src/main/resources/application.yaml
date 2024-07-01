@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: JpaExampleApplication
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ultimate_db
+    username: shrikant
+    password: kale
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
