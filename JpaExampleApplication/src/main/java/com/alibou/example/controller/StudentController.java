@@ -1,5 +1,8 @@
 package com.alibou.example.controller;
 
+import com.alibou.example.dto.StudentDto;
+import com.alibou.example.dto.StudentResponseDto;
+import com.alibou.example.entity.School;
 import com.alibou.example.entity.Student;
 import com.alibou.example.service.StudentService;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +20,34 @@ public class StudentController {
         this.studentService = studentService;
     }
 
+    private Student toStudent(StudentDto dto) {
+        var student = new Student();
+        student.setFirstName(dto.firstName());
+        student.setLastName(dto.lastName());
+        student.setEmail(dto.email());
+
+        var school = new School();
+        student.setId(dto.schoolId());
+        student.setSchool(school);
+
+        return student;
+    }
+
+    private StudentResponseDto toStudentResponseDto(Student student) {
+        return new StudentResponseDto(
+                student.getFirstName(),
+                student.getLastName(),
+                student.getEmail()
+        );
+    }
+
     @PostMapping("/students")
-    public Student post(
-            @RequestBody Student student
+    public StudentResponseDto post(
+            @RequestBody StudentDto studentDto
     ) {
-        return studentService.save(student);
+        var student = toStudent(studentDto);
+        var savedStudent = studentService.save(student);
+        return toStudentResponseDto(savedStudent);
     }
 
     @GetMapping("/students")
