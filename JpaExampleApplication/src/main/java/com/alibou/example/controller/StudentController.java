@@ -2,8 +2,8 @@ package com.alibou.example.controller;
 
 import com.alibou.example.dto.StudentDto;
 import com.alibou.example.dto.StudentResponseDto;
-import com.alibou.example.entity.Student;
 import com.alibou.example.service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +21,7 @@ public class StudentController {
 
     @PostMapping("/students")
     public StudentResponseDto saveStudent(
-            @RequestBody StudentDto studentDto
+           @Valid @RequestBody StudentDto studentDto
     ) {
         return this.studentService.saveStudent(studentDto);
     }
