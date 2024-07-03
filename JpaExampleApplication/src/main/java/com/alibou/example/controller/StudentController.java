@@ -2,13 +2,11 @@ package com.alibou.example.controller;
 
 import com.alibou.example.dto.StudentDto;
 import com.alibou.example.dto.StudentResponseDto;
-import com.alibou.example.entity.School;
 import com.alibou.example.entity.Student;
 import com.alibou.example.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class StudentController {
@@ -20,51 +18,29 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    private Student toStudent(StudentDto dto) {
-        var student = new Student();
-        student.setFirstName(dto.firstName());
-        student.setLastName(dto.lastName());
-        student.setEmail(dto.email());
-
-        var school = new School();
-        student.setId(dto.schoolId());
-        student.setSchool(school);
-
-        return student;
-    }
-
-    private StudentResponseDto toStudentResponseDto(Student student) {
-        return new StudentResponseDto(
-                student.getFirstName(),
-                student.getLastName(),
-                student.getEmail()
-        );
-    }
 
     @PostMapping("/students")
-    public StudentResponseDto post(
+    public StudentResponseDto saveStudent(
             @RequestBody StudentDto studentDto
     ) {
-        var student = toStudent(studentDto);
-        var savedStudent = studentService.save(student);
-        return toStudentResponseDto(savedStudent);
+        return this.studentService.saveStudent(studentDto);
     }
 
     @GetMapping("/students")
-    public List<Student> findAllStudents() {
-        return studentService.findAll();
+    public List<StudentResponseDto> findAllStudents() {
+        return studentService.findAllStudents();
     }
 
     @GetMapping("/students/{student-id}")
-    public Optional<Student> findStudent(
+    public StudentResponseDto findStudentById(
             @PathVariable("student-id") Integer studentId
     ) {
-        return studentService.findStudent(studentId);
+        return studentService.findStudentById(studentId);
     }
 
     // http://localhost:8080/students/search/Shrikant
     @GetMapping("/students/search/{student-name}")
-    public List<Student> findStudentByName(
+    public List<StudentResponseDto> findStudentByName(
             @PathVariable("student-name") String studentName
     ) {
         return studentService.findStudentByName(studentName);
@@ -72,7 +48,7 @@ public class StudentController {
 
     // http://localhost:8080/students/matches/Kale
     @GetMapping("/students/matches/{student-name}")
-    public List<Student> findStudentByLastNameContaining(
+    public List<StudentResponseDto> findStudentByLastNameContaining(
             @PathVariable("student-name") String studentName
     ) {
         return studentService.findStudentByLastNameContaining(studentName);
