@@ -4,10 +4,10 @@ import jakarta.validation.constraints.NotEmpty;
 
 public record StudentDto(
 
-        @NotEmpty
+        @NotEmpty(message = "First Name should not be empty ")
         String firstName,
 
-        @NotEmpty
+        @NotEmpty(message = "Last Name should not be empty ")
         String lastName,
 
         String email,
